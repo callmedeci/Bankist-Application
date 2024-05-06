@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/public/icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Backist</title>
+  <link rel="stylesheet" href="./src/css/tailwind.css">
+</head>
+
+<body class="Body">
+
+  <nav class="grid grid-cols-3 w-full items-center p-2">
+
+    <p id="label-welcome" class="text-stone-700 font-semibold text-2xl col-span-1">
+      Login to get started
+    </p>
+
+    <div class="col-span-1 flex items-center justify-center">
+      <img src="public/logo.png" alt="icon"
+        class="h-14 w-14 hover:scale-105 transition-all ease-in duration-300 cursor-pointer">
+    </div>
+
+    <form class="flex justify-end p-2 gap-2 col-span-1">
+      <input placeholder="user" type="text" id="input-user" class="Authentication_Input">
+      <input placeholder="PIN" type="password" id="input-pin" class="Authentication_Input">
+      <button type="submit" id="btn-submit"
+        class="text-3xl text-stone-700 hover:text-stone-400 transition-all duration-300">&rarr;</button>
+    </form>
+
+  </nav>
+
+  <!--Main Tag::Begin-->
+  <main id="Container" class="Main">
+
+    <div class="mt-10 grid grid-cols-2 w-auto gap-x-6 max-h-[625px]">
+
+      <div class="col-span-1 flex flex-col -mx-2 my-2">
+        <p class="text-3xl font-semibold text-stone-700">Current balance</p>
+        <p class="text-stone-500">As of <span id="date"></span></p>
+      </div>
+
+      <p id="label-balance" class="col-span-1 flex justify-end text-5xl text-stone-700"> 3840&euro; </p>
+
+      <!--Movements::Begin-->
+      <div id="balance-Container" class="balance__Container">
+      </div>
+      <!--Movements::End-->
+
+      <!--Movements Operators Section::Begin-->
+      <div class="col-span-1 flex flex-col gap-6">
+
+        <form class="Transfer__Money_From">
+          <p class="text-xl font-semibold text-stone-700 col-span-2">Transfer Money</p>
+          <div class="col-span-2 gap-4 items-center self-center mt-6 relative grid grid-cols-5">
+
+            <div class="col-span-2">
+              <input type="text" id="input-transfer-value" class="Transfer__Money_Input">
+              <label for="text-input" class="text-sm text-stone-700 font-semibold flex justify-center">
+                Transfer to
+              </label>
+            </div>
+
+            <div class="col-span-2">
+              <input type="number" min="1" id="input-transfer-amount-value" class="Transfer__Money_Input">
+              <label for="text-input" class="text-sm text-stone-700 font-semibold flex justify-center">
+                Amount
+              </label>
+            </div>
+
+            <button type="submit" id="btn-transfer-to" class="Submit_Btn">&rarr;</button>
+          </div>
+        </form>
+
+        <form class="Req__Loan_Form">
+          <p class="text-xl font-semibold text-stone-700">Request loan</p>
+          <div class="w-full gap-4 flex items-center justify-start mt-6 relative">
+
+            <div>
+              <input type="number" id="input-loan-amount-value" min="1" class="Req__Loan_Input">
+              <label for="text-input" class="text-sm text-stone-700 font-semibold flex justify-center">
+                Amount
+              </label>
+            </div>
+
+            <button type="submit" id="btn-loan-amount" class="Submit_Btn">&rarr;</button>
+          </div>
+        </form>
+
+        <form class="Close__Acount_Form">
+          <p class="text-xl font-semibold text-stone-700">Close account</p>
+          <div class="w-full gap-4 flex items-center justify-start mt-6">
+            <div>
+              <input type="text" id="input-user-close" required class="Close__Acount_Input">
+              <label for="text-input" class="text-sm text-stone-700 font-semibold flex justify-center">
+                Confirm user
+              </label>
+            </div>
+
+            <div>
+              <input type="password" min="1" id="input-pin-close" required class="Close__Acount_Input">
+              <label for="text-input" class="text-sm text-stone-700 font-semibold flex justify-center">
+                Confirm PIN
+              </label>
+            </div>
+
+            <button type="submit" id="btn-close" class="Submit_Btn">&rarr;</button>
+          </div>
+        </form>
+
+      </div>
+      <!--Movements Operators Section::End-->
+
+
+      <!--Balances::Begin-->
+      <div class="flex col-span-1 mt-6 justify-between items-center">
+        <div class="col-span-3 w-full flex items-center justify-between gap-2">
+          <div class="flex items-center gap-3">
+            <p class="text-stone-700 font-gothamBold">IN</p>
+            <span id="label-in" class="text-3xl text-green-400">5020&euro;</span>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <p class="text-stone-700 font-gothamBold">OUT</p>
+            <span id="label-out" class="text-3xl text-rose-500">1180&euro;</span>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <p class="text-stone-700 font-gothamBold">INSERT</p>
+            <span id="label-interset" class="text-3xl text-green-400">59.4&euro;</span>
+          </div>
+
+          <button id="btn-sort" type="button"
+            class="text-stone-700 text-lg font-gothamBold col-span-1 hover:scale-105 transition-all duration-700">
+            &downarrow; sort
+          </button>
+
+        </div>
+      </div>
+      <!--Balances::End-->
+
+      <!--Right Footer Section::Begin-->
+      <div class="col-span-1 flex items-center justify-end mt-6 font-gothamXL">
+        <p class="text-stone-700">You will be logged out in <span id="label-timer">00:00</span></p>
+      </div>
+      <!--Right Footer Section::End-->
+
+    </div>
+
+  </main>
+  <!--Main Tag::End-->
+  <script src="src/js/app.js"></script>
+</body>
+
+</html>
